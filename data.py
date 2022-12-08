@@ -12,7 +12,8 @@ class FoolData:
 
         self.filepath = os.path.join(os.getcwd(), 'statistics.json')
         with open(self.filepath, 'w') as jsonfile:
-            json.dump(self.statistics, jsonfile)
+            if os.stat("file").st_size == 0:
+                json.dump(self.statistics, jsonfile)
 
     def get_statistics(self):
         with open(self.filepath, 'r') as jsonfile:
